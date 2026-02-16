@@ -5,7 +5,8 @@
 import { useContext } from 'react';
 import TodosContext from '../../TodosContext.jsx';
 function TodoList() {
-  const { taskList } = useContext(TodosContext);
+  const { taskList, deleteTask } = useContext(TodosContext);
+
   return (
     <div>
       {taskList.map((task, indx) => {
@@ -13,7 +14,7 @@ function TodoList() {
           <div key={indx} style={{ display: 'flex', gap: '10px' }}>
             <input type="checkbox" name="task" id={indx} />
             <p>{task}</p>
-            <button>delete</button>
+            <button onClick={() => deleteTask(indx)}>delete</button>
           </div>
         );
       })}
