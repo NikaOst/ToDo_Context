@@ -8,8 +8,14 @@ function TodoList() {
   const { taskList } = useContext(TodosContext);
   return (
     <div>
-      {taskList.map((task) => {
-        return <p>{task}</p>;
+      {taskList.map((task, indx) => {
+        return (
+          <div key={indx} style={{ display: 'flex', gap: '10px' }}>
+            <input type="checkbox" name="task" id={indx} />
+            <p>{task}</p>
+            <button>delete</button>
+          </div>
+        );
       })}
     </div>
   );
