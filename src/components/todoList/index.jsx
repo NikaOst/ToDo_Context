@@ -5,15 +5,23 @@
 import { useContext } from 'react';
 import TodosContext from '../../TodosContext.jsx';
 function TodoList() {
-  const { taskList, deleteTask } = useContext(TodosContext);
+  const { taskList, completeTasks, deleteTask, completeTask } = useContext(TodosContext);
 
   return (
     <div>
       {taskList.map((task, indx) => {
         return (
           <div key={indx} style={{ display: 'flex', gap: '10px' }}>
-            <input type="checkbox" name="task" id={indx} />
-            <p>{task}</p>
+            <input
+              style={{}}
+              onChange={() => completeTask(indx)}
+              type="checkbox"
+              name="task"
+              id={indx}
+            />
+            <p style={{ textDecoration: completeTasks.includes(indx) ? 'line-through' : 'none' }}>
+              {task}
+            </p>
             <button onClick={() => deleteTask(indx)}>delete</button>
           </div>
         );

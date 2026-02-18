@@ -28,9 +28,7 @@ export const TodosProvider = ({ children }) => {
     if (!completeTasks.includes(id)) {
       setCompleteTasks([...completeTasks, id]);
     } else {
-      const newList = completeTasks.filter((task, indx) => {
-        return indx !== id;
-      });
+      const newList = completeTasks.filter((task) => task !== id);
       setCompleteTasks(newList);
     }
   };
